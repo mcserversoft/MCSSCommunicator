@@ -1,5 +1,6 @@
 package com.mcserversoft.mcsscommunicator.dto;
 
+/* Deliberately violating naming conventions because this DTO needs to be read by a C# application */
 public class PlayerDTO {
 
     private String Username;
