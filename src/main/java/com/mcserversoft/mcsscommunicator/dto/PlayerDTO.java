@@ -10,24 +10,23 @@ public class PlayerDTO {
         return Username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
-    }
-
     public String getUUID() {
         return UUID;
-    }
-
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
     }
 
     public String getServerUUID() {
         return ServerUUID;
     }
 
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
     public void setServerUUID(String ServerUUID) {
         this.ServerUUID = ServerUUID;
     }
-
 }
