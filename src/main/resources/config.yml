@@ -1,0 +1,9 @@
+# Core-element of MC Server Soft.
+# Provides real-time diagnostics and server telemetry.
+# This file will be used by mcss, please don't alter this file unless... you're a rebel.
+
+# URL of the mcss internal webserver
+url: "http://localhost:9696/api"
+
+# The GUID of the mcss server
+serverGUID: "6841e15d-8887-4643-a6ce-d7faeb5f2318"

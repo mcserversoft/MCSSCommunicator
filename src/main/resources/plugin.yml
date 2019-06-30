@@ -1,0 +1,9 @@
+name: MCSSCommunicator
+version: 1.0.0
+description: Core-element of MC Server Soft. Provides real-time diagnostics and server telemetry.
+author: Fireblade115 a.k.a. Fiahblade
+website: https://www.mcserversoft.com/
+
+main: com.mcserversoft.mcsscommunicator.MCSSCommunicator
+api-version: 1.14
+database: false
