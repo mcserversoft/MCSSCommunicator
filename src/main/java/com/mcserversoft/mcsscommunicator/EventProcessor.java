@@ -14,14 +14,14 @@ public class EventProcessor {
         this.client = new HTTPClient(config.getUrl());
     }
 
-    public void login(Player player) {
+    public void playerLogin(Player player) {
         PlayerDTO playerDTO = createPlayerDTO(player);
-        client.post("player/join", new Gson().toJson(playerDTO));
+        client.post("player/login", new Gson().toJson(playerDTO));
     }
 
-    public void leave(Player player) {
+    public void playerQuit(Player player) {
         PlayerDTO playerDTO = createPlayerDTO(player);
-        client.post("player/leave", new Gson().toJson(playerDTO));
+        client.post("player/quit", new Gson().toJson(playerDTO));
     }
 
     private PlayerDTO createPlayerDTO(Player player) {

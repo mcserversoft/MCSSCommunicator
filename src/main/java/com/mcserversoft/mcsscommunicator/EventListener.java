@@ -15,11 +15,11 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event) {
-        eventProcessor.login(event.getPlayer());
+        eventProcessor.playerLogin(event.getPlayer());
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        eventProcessor.leave(event.getPlayer());
+        eventProcessor.playerQuit(event.getPlayer());
     }
 }
