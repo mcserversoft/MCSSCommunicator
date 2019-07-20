@@ -54,8 +54,8 @@ public class HTTPClient {
                     .post(body)
                     .build();
 
-            if (debug) {
-                try (Response response = client.newCall(request).execute()) {
+            try (Response response = client.newCall(request).execute()) {
+                if (debug) {
                     getLogger().info(String.format("[DEBUG] %s", response.body().string()));
                     getLogger().info(String.format("[DEBUG] %s", response.code()));
                 }
