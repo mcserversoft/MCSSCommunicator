@@ -6,12 +6,12 @@ import org.bukkit.entity.Player;
 
 public class EventProcessor {
 
-    private final Config config;
     private final HTTPClient client;
+    private final String serverGUID;
 
     public EventProcessor(Config config) {
-        this.config = config;
-        this.client = new HTTPClient(config.getUrl());
+        this.serverGUID = config.getServerGUID();
+        this.client = new HTTPClient(config);
     }
 
     public void playerLogin(Player player) {
@@ -27,7 +27,7 @@ public class EventProcessor {
     private PlayerDTO createPlayerDTO(Player player) {
         String username = player.getDisplayName();
         String uuid = player.getUniqueId().toString();
-        String serverGuid = config.getServerGUID();
+        String serverGuid = serverGUID;
 
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setUsername(username);

@@ -6,10 +6,12 @@ public class Config {
 
     private final String url;
     private final String serverGUID;
+    private final boolean debug;
 
     public Config(FileConfiguration config) {
         this.url = config.getString("url");
         this.serverGUID = config.getString("serverGUID");
+        this.debug = config.getBoolean("debug");
     }
 
     public String getUrl() {
@@ -18,5 +20,9 @@ public class Config {
 
     public String getServerGUID() {
         return this.serverGUID;
+    }
+    
+    public boolean getIsDebugEnabled() {
+        return this.debug;
     }
 }

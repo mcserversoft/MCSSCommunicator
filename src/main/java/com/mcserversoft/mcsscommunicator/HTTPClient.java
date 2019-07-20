@@ -6,6 +6,7 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static org.bukkit.Bukkit.getLogger;
 
@@ -13,13 +14,15 @@ public class HTTPClient {
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
+    private final boolean debug;
     private URL baseUrl;
 
-    public HTTPClient(String url) {
-        boolean success = setUrl(url);
+    public HTTPClient(Config config) {
+        this.debug = config.getIsDebugEnabled();
 
+        boolean success = setUrl(config.getUrl());
         if (!success) {
-            setUrl("http://localhost:9696/api");
+            setUrl("http://localhost:25560/api");
         }
     }
 
@@ -27,7 +30,7 @@ public class HTTPClient {
         try {
             this.baseUrl = new URL(url);
         } catch (MalformedURLException ex) {
-            getLogger().severe(String.format("Failed to parse url from config File. Will use the default value."));
+            getLogger().warning(String.format("Failed to parse url from config File. Will use the default value."));
             return false;
         }
         return true;
@@ -38,10 +41,11 @@ public class HTTPClient {
         try {
             String url = String.format("%s/%s", baseUrl, path);
 
-            /*
-             logger.info(json);
-             logger.info(url);
-             */
+            if (debug) {
+                getLogger().info(String.format("[DEBUG] %s", json));
+                getLogger().info(String.format("[DEBUG] %s", url));
+            }
+
             OkHttpClient client = new OkHttpClient();
 
             RequestBody body = RequestBody.create(JSON, json);
@@ -49,14 +53,14 @@ public class HTTPClient {
                     .url(url)
                     .post(body)
                     .build();
-            /*
-             try (Response response = client.newCall(request).execute()) {
-             getLogger().info(response.body().string());
-             }
-             */
 
-            //TODO add custom messages when mcss is not running etc.
-            //TODO add debug option
+            if (debug) {
+                try (Response response = client.newCall(request).execute()) {
+                    getLogger().info(String.format("[DEBUG] %s", response.body().string()));
+                    getLogger().info(String.format("[DEBUG] %s", response.code()));
+                }
+            }
+
         } catch (Exception ex) {
             getLogger().severe(String.format("Failed to post data to mcss: ", ex.getMessage()));
         }

@@ -22,7 +22,7 @@ public class MCSSCommunicator extends JavaPlugin {
 
         // Loading complete
         getLogger().info("Powering your Minecraft Server since Beta 1.5");
-        getLogger().info("> Core-element of MC Server Soft. ");
+        getLogger().info("> Core-element of MC Server Soft.");
         getLogger().info("> Provides real-time diagnostics and server telemetry.");
         getLogger().info(String.format("For more info visit: %s", getDescription().getWebsite()));
         getLogger().info(String.format("Server version: %s", Bukkit.getVersion()));
